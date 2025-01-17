@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autentificare</title>
+    <!-- Legătura cu fișierul CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Includerea fontului Jersey 15 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Formular de autentificare -->
+        <form action="autentificare.php" method="POST">
+            <h2 class="jersey-15-regular">Autentificare</h2>
+            <label for="email" class="jersey-15-regular">Adresa de email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="parola" class="jersey-15-regular">Parola</label>
+            <input type="password" id="parola" name="parola" required>
+            
+            <!-- CAPTCHA -->
+            <div class="captcha-section">
+                <label for="captchaInput">Introduceți textul din imagine:</label>
+                <canvas id="captchaCanvas" width="200" height="50"></canvas>
+                <input type="text" id="captchaInput" name="captcha" placeholder="Introduceți codul" required>
+                <button type="button" id="refreshCaptcha">Reîmprospătează</button>
+            </div>
+
+            <button type="submit" class="jersey-15-regular">Autentifică-te</button>
+        </form>
+
+        <!-- Link pentru crearea unui cont -->
+        <p class="jersey-15-regular">Nu ai un cont? <a href="creeaza-cont.html" class="jersey-15-regular">Creează un cont</a></p>
+    </div>
+
+    <script>
+        let captchaCode = '';
+
+        function generateCaptcha() {
+            const canvas = document.getElementById('captchaCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+            captchaCode = '';
+            for (let i = 0; i < 6; i++) {
+                captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#333';
+            ctx.fillText(captchaCode, 10, 35);
+        }
+
+        document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            const userInput = document.getElementById('captchaInput').value;
+            if (userInput !== captchaCode) {
+                event.preventDefault();
+                alert('Codul CAPTCHA introdus este incorect. Vă rugăm să încercați din nou.');
+                generateCaptcha();
+            }
+        });
+
+        // Generăm CAPTCHA la încărcarea paginii
+        generateCaptcha();
+    </script>
+</body>
+</html>

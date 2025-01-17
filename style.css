@@ -1,0 +1,113 @@
+/* Reset de bază */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #6b8e68;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Stil pentru containerul formularelor */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titlul formularelor */
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #09785e;
+}
+
+/* Stil pentru etichete */
+.container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Stil pentru input-uri */
+.container input[type="email"],
+.container input[type="password"],
+.container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Captcha stiluri */
+.captcha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Stil pentru butoane */
+.container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #09785e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container button:hover {
+    background-color: #065a42;
+}
+
+/* Link-ul pentru creare cont */
+.container p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container p a {
+    color: #09785e;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.container p a:hover {
+    color: #065a42;
+}
+/* Stiluri pentru CAPTCHA */
+.captcha-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#captchaCanvas {
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#refreshCaptcha {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#refreshCaptcha:hover {
+    background-color: #0056b3;
+}
+
